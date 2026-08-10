@@ -284,4 +284,12 @@ html, body {
   .stamp-box input[type="checkbox"] {
     display: none;
   }
+
+  /* The stamp graphic is normally invisible until a digital click adds
+     .stamped — but a printed page has no click, so force it visible as an
+     empty tick-box outline that can be checked off by hand or with a stamp. */
+  .stamp-graphic {
+    opacity: 1;
+    transform: none;
+  }
 }
