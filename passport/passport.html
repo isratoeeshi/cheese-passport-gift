@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧀 Cheese Passport</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="passport-page">
+    <div class="cover">
+      <h1>🧀 Cheese Passport</h1>
+      <p class="cover-subtitle">A tour of the world's cheeses, one stamp at a time</p>
+      <div class="qr-wrap">
+        <img src="../map/qr-code.png" alt="QR code linking to the live World Cheese Map" />
+        <p class="qr-caption">
+          Scan to open the live map, or visit
+          <a href="https://isratoeeshi.github.io/cheese-passport-gift/" target="_blank" rel="noopener">
+            isratoeeshi.github.io/cheese-passport-gift
+          </a>
+          — find a vegetarian cheese wherever you land, then come stamp it here.
+        </p>
+      </div>
+    </div>
+
+    <div class="progress-panel">
+      <span class="progress-label" id="progress-label">0 / 0 cheeses tried</span>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <div id="passport-entries"><!-- populated by app.js --></div>
+
+    <div class="passport-footer">
+      <p>Made with 🧀. Tick a box, seal a stamp, taste the world.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

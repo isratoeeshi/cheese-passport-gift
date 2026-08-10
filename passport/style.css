@@ -1,0 +1,287 @@
+:root {
+  --beige: #F5F0E1;
+  --beige-dark: #EDE4D3;
+  --brown: #5C4033;
+  --brown-light: #6B4A34;
+  --sage: #7A8450;
+  --sage-light: #8A9A5B;
+  --gold: #C9A24B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--beige);
+  color: var(--brown);
+  font-family: "Georgia", "Iowan Old Style", serif;
+}
+
+.passport-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+}
+
+/* ---------- Cover / header ---------- */
+
+.cover {
+  text-align: center;
+  padding: 32px 16px;
+  border: 3px solid var(--brown);
+  border-radius: 16px;
+  background: var(--beige-dark);
+  margin-bottom: 24px;
+}
+
+.cover h1 {
+  margin: 0 0 4px 0;
+  font-size: 2rem;
+  color: var(--brown);
+}
+
+.cover .cover-subtitle {
+  font-style: italic;
+  color: var(--brown-light);
+  margin: 0 0 20px 0;
+}
+
+.cover .qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cover .qr-wrap img {
+  width: 160px;
+  height: 160px;
+  border: 3px solid var(--brown);
+  border-radius: 10px;
+  background: var(--beige);
+}
+
+.cover .qr-caption {
+  font-size: 0.8rem;
+  color: var(--brown-light);
+  max-width: 320px;
+}
+
+.cover .qr-caption a {
+  color: var(--brown);
+  font-weight: bold;
+}
+
+/* ---------- Progress bar ---------- */
+
+.progress-panel {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--beige);
+  border-bottom: 2px solid var(--brown);
+  padding: 10px 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+}
+
+.progress-bar-track {
+  flex: 1;
+  height: 10px;
+  border-radius: 6px;
+  background: var(--beige-dark);
+  border: 1px solid var(--brown);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+.progress-label {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+/* ---------- Continent section headers ---------- */
+
+.continent-header {
+  margin: 40px 0 12px 0;
+  padding: 10px 16px;
+  background: var(--brown);
+  color: var(--beige);
+  border-radius: 8px;
+  font-size: 1.3rem;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.continent-header .continent-count {
+  font-size: 0.75rem;
+  font-weight: normal;
+  opacity: 0.85;
+}
+
+.continent-header:first-of-type {
+  margin-top: 0;
+}
+
+/* ---------- Cheese entry cards ---------- */
+
+.cheese-entry {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  background: var(--beige-dark);
+  border: 1px solid var(--brown-light);
+  border-radius: 10px;
+  page-break-inside: avoid;
+}
+
+.cheese-entry.stamped {
+  border-color: var(--sage);
+  background: #eef0e3;
+}
+
+.stamp-box {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stamp-box input[type="checkbox"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.stamp-graphic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px dashed var(--brown-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: transparent;
+  transform: scale(0.7) rotate(-12deg);
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.cheese-entry.stamped .stamp-graphic {
+  border-style: solid;
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 162, 75, 0.15);
+  opacity: 1;
+  transform: scale(1) rotate(-12deg);
+}
+
+.entry-body h3 {
+  margin: 0 0 2px 0;
+  font-size: 1.05rem;
+  color: var(--brown);
+}
+
+.entry-body .entry-country {
+  font-style: italic;
+  color: var(--brown-light);
+  font-size: 0.82rem;
+  margin: 0 0 6px 0;
+}
+
+.entry-body .entry-veg {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 1px 7px;
+  border-radius: 8px;
+  background: var(--sage);
+  color: var(--beige);
+  margin-left: 6px;
+}
+
+.entry-body .entry-tasting {
+  margin: 4px 0 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+
+.passport-footer {
+  text-align: center;
+  color: var(--brown-light);
+  font-size: 0.8rem;
+  margin-top: 40px;
+  padding-top: 16px;
+  border-top: 1px solid var(--beige-dark);
+}
+
+/* ---------- Print stylesheet ---------- */
+
+@media print {
+  .progress-panel {
+    position: static;
+  }
+
+  body {
+    background: white;
+  }
+
+  .passport-page {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .cover {
+    page-break-after: avoid;
+  }
+
+  .continent-header {
+    page-break-after: avoid;
+    break-after: avoid-page;
+  }
+
+  .cheese-entry {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  /* A5-friendly: two columns of entries where space allows, generous margins */
+  @page {
+    size: A5;
+    margin: 12mm;
+  }
+
+  .stamp-box input[type="checkbox"] {
+    display: none;
+  }
+}

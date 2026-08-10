@@ -1,0 +1,316 @@
+:root {
+  --beige: #F5F0E1;
+  --beige-dark: #EDE4D3;
+  --brown: #5C4033;
+  --brown-light: #6B4A34;
+  --sage: #7A8450;
+  --sage-light: #8A9A5B;
+  --gold: #C9A24B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Georgia", "Iowan Old Style", serif;
+  background: var(--beige);
+  color: var(--brown);
+}
+
+#map {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* ---------- Header ---------- */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 1200;
+  background: var(--brown);
+  color: var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+header h1 {
+  font-size: 1.15rem;
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+header h1 .subtitle {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-style: italic;
+  display: block;
+}
+
+/* ---------- Search box (top-left, under header) ---------- */
+
+.search-panel {
+  position: absolute;
+  top: 76px;
+  left: 12px;
+  z-index: 1100;
+  width: 240px;
+}
+
+.search-panel input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid var(--brown);
+  border-radius: 20px;
+  background: var(--beige);
+  color: var(--brown);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.search-panel input::placeholder {
+  color: var(--brown-light);
+  opacity: 0.7;
+}
+
+.search-results {
+  margin-top: 4px;
+  background: var(--beige);
+  border: 1px solid var(--brown);
+  border-radius: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-results.visible {
+  display: block;
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--beige-dark);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item.active {
+  background: var(--beige-dark);
+}
+
+.search-result-item .sr-name {
+  font-weight: bold;
+}
+
+.search-result-item .sr-country {
+  color: var(--brown-light);
+  font-size: 0.78rem;
+}
+
+.search-result-item .sr-veg {
+  color: var(--sage);
+  font-weight: bold;
+}
+
+/* ---------- Vegetarian toggle (top-right) ---------- */
+
+.veg-toggle {
+  position: absolute;
+  top: 76px;
+  right: 12px;
+  z-index: 1100;
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 2px solid var(--brown);
+  background: var(--beige);
+  color: var(--brown);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.15s ease, color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.veg-toggle:hover {
+  background: var(--beige-dark);
+}
+
+.veg-toggle.active {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: var(--beige);
+}
+
+.veg-toggle.active:hover {
+  background: var(--sage-light);
+}
+
+/* ---------- Legend (bottom-left) ---------- */
+
+.legend {
+  background: var(--beige);
+  border: 2px solid var(--brown);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.78rem;
+  color: var(--brown);
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 220px;
+}
+
+.legend h4 {
+  margin: 0 0 6px 0;
+  font-size: 0.85rem;
+  color: var(--brown);
+  border-bottom: 1px solid var(--beige-dark);
+  padding-bottom: 4px;
+}
+
+.legend .legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.legend .legend-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.legend .legend-badge {
+  position: absolute;
+  bottom: -2px;
+  right: -4px;
+  font-size: 0.7rem;
+}
+
+/* ---------- Marker divIcon ---------- */
+
+.cheese-marker {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.cheese-marker .veg-badge {
+  position: absolute;
+  bottom: -3px;
+  right: -6px;
+  font-size: 0.85rem;
+  background: var(--beige);
+  border-radius: 50%;
+  line-height: 1;
+  padding: 1px;
+  border: 1px solid var(--sage);
+}
+
+/* ---------- MarkerCluster overrides (palette match) ---------- */
+
+.marker-cluster-cheese {
+  background: rgba(201, 162, 75, 0.55);
+}
+
+.marker-cluster-cheese div {
+  background: var(--brown);
+  color: var(--beige);
+  font-weight: bold;
+  font-family: inherit;
+}
+
+/* ---------- Popup styling ---------- */
+
+.leaflet-popup-content-wrapper {
+  background: var(--beige);
+  color: var(--brown);
+  border-radius: 10px;
+  border: 2px solid var(--brown);
+}
+
+.leaflet-popup-tip {
+  background: var(--beige);
+  border: 2px solid var(--brown);
+}
+
+.cheese-popup h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: var(--brown);
+}
+
+.cheese-popup .popup-country {
+  font-style: italic;
+  color: var(--brown-light);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.cheese-popup .popup-veg-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.cheese-popup .popup-veg-status.veg {
+  background: var(--sage);
+  color: var(--beige);
+}
+
+.cheese-popup .popup-veg-status.non-veg {
+  background: var(--brown-light);
+  color: var(--beige);
+}
+
+.cheese-popup p {
+  margin: 4px 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.cheese-popup .popup-tasting {
+  font-style: italic;
+  color: var(--brown-light);
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🧀 The World Cheese Map</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>
+      🧀 The World Cheese Map
+      <span class="subtitle">Find a vegetarian cheese wherever you go</span>
+    </h1>
+  </header>
+
+  <div class="search-panel">
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Search a cheese or country..."
+      autocomplete="off"
+    />
+    <div id="search-results" class="search-results"></div>
+  </div>
+
+  <button id="veg-toggle" class="veg-toggle">🌱 Show vegetarian only</button>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Bottom-left legend control, added once the map exists (app.js defines `map` globally).
+    const legend = L.control({ position: "bottomleft" });
+    legend.onAdd = function () {
+      const div = L.DomUtil.create("div", "legend");
+      div.innerHTML = `
+        <h4>Legend</h4>
+        <div class="legend-row">
+          <span class="legend-icon">🧀</span>
+          <span>Cheese</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-icon">🧀<span class="legend-badge">🌱</span></span>
+          <span>Vegetarian-suitable cheese</span>
+        </div>
+        <div class="legend-row">
+          <span class="legend-icon" style="background:var(--gold);border-radius:50%;">#</span>
+          <span>Cluster — zoom in to expand</span>
+        </div>
+      `;
+      return div;
+    };
+    legend.addTo(map);
+  </script>
+</body>
+</html>
