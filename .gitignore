@@ -4,3 +4,10 @@ __pycache__/
 venv/
 .DS_Store
 Thumbs.db
+
+# Private, local-only files that mention the gift recipient by name —
+# never commit or push these to the public repo.
+passport/passport-vegetarian.html
+passport/app-vegetarian.js
+passport/*-private.pdf
+passport/Cheese-Passport-Vegetarian*.pdf
