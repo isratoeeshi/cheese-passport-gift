@@ -14,3 +14,4 @@ passport/Cheese-Passport-Vegetarian*.pdf
 passport/generate_passport_pdf.py
 passport/Cheese-Passport-Full-*.pdf
 passport/_emoji_cache/
+passport/impose_booklet.py
