@@ -1,6 +1,8 @@
 // Cheese World Map — Leaflet + MarkerCluster
 // Loads ../data/cheeses.json (the single source of truth shared with the passport).
 
+const CARTO_KEY = "cb1_4ecn_1_3ffb6bd30d0d6a50622bd5f7";
+
 const RENNET_LABELS = {
   microbial: "Microbial rennet",
   vegetable: "Vegetable rennet",
@@ -18,7 +20,7 @@ const map = L.map("map", {
   worldCopyJump: true,
 }).setView([20, 10], 2);
 
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+L.tileLayer(`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`, {
   attribution:
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
   subdomains: "abcd",
